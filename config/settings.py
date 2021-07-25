@@ -26,6 +26,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'organizations:hello'
 # Application definition
 
 INSTALLED_APPS = [
@@ -35,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
     'organizations.apps.OrganizationsConfig',
     'products.apps.ProductsConfig',
     'sale.apps.SaleConfig',
