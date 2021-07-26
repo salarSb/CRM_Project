@@ -27,7 +27,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 LOGIN_URL = 'users:login'
-LOGIN_REDIRECT_URL = 'organizations:hello'
+LOGIN_REDIRECT_URL = 'organizations:list-organizations'
 # Application definition
 
 INSTALLED_APPS = [

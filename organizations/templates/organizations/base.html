@@ -7,6 +7,39 @@
     <title>My CRM: {% block title %}{{ page_title }}{% endblock %}</title>
 </head>
 <body>
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #80d0c7;">
+        <a class="navbar-brand" href="{% url 'organizations:list-organizations' %}">Organizations</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'organizations:create-organization' %}">Create Organization
+                        <span
+                                class="sr-only">(current)</span></a>
+                </li>
+                {% if not user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:login' %}">Login</a>
+                    </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
+                    </li>
+                {% endif %}
+            </ul>
+            {% if user.is_authenticated %}
+                <span class="navbar-text">
+                    <a class="nav-link" href="{% url 'users:edit' %}">{{ request.user.get_full_name }}</a>
+                </span>
+            {% endif %}
+        </div>
+    </nav>
+{% endblock %}
 {% block content %}{% endblock %}
 </body>
 <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>

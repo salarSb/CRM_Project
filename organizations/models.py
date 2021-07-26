@@ -15,3 +15,6 @@ class Organization(models.Model):
     owner_email = models.EmailField()
     submit_date = models.DateField(auto_now_add=True)
     submit_user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
