@@ -1,11 +1,13 @@
 import itertools
 
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView
+from rest_framework.permissions import IsAuthenticated
 
 from organizations.models import Organization
+from organizations.serializers import OrganizationSerializer
 
 
 class ListOrganization(ListView):
@@ -40,3 +42,25 @@ class CreateOrganization(PermissionRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.submit_user = self.request.user
         return super(CreateOrganization, self).form_valid(form)
+
+
+"""
+Django Rest FrameWork Views
+"""
+
+
+class OrganizationAPI(ListCreateAPIView):
+    queryset = Organization.objects.all()
+    serializer_class = OrganizationSerializer
+    permission_classes = (IsAuthenticated,)
+
+
+class OrganizationDetailAPI(RetrieveUpdateAPIView):
+    queryset = Organization.objects.all()
+    serializer_class = OrganizationSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        qs = super(OrganizationDetailAPI, self).get_queryset()
+        qs = qs.filter(submit_user=self.request.user)
+        return qs
