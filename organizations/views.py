@@ -54,6 +54,11 @@ class OrganizationAPI(ListCreateAPIView):
     serializer_class = OrganizationSerializer
     permission_classes = (IsAuthenticated,)
 
+    def get_queryset(self):
+        qs = super(OrganizationAPI, self).get_queryset()
+        qs = qs.filter(submit_user=self.request.user)
+        return qs
+
 
 class OrganizationDetailAPI(RetrieveUpdateAPIView):
     queryset = Organization.objects.all()
