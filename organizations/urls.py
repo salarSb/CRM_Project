@@ -6,6 +6,7 @@ app_name = 'organizations'
 urlpatterns = [
     path('', views.ListOrganization.as_view(), name='list-organizations'),
     path('create/', views.CreateOrganization.as_view(), name='create-organization'),
+    path('update/<int:pk>/', views.UpdateOrganization.as_view(), name='update-organization'),
 
     # DRF URLs
     path('api/v1/organization/', views.OrganizationAPI.as_view(), name='organization-api'),

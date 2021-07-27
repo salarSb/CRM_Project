@@ -1,8 +1,9 @@
 import itertools
 
 from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.http import HttpResponseForbidden
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 
@@ -42,6 +43,24 @@ class CreateOrganization(PermissionRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.submit_user = self.request.user
         return super(CreateOrganization, self).form_valid(form)
+
+
+class UpdateOrganization(PermissionRequiredMixin, UpdateView):
+    model = Organization
+    fields = ('province', 'name', 'organization_phone', 'number_of_workers', 'products', 'owner_of_organization',
+              'owner_phone', 'owner_email')
+    success_url = reverse_lazy('organizations:list-organizations')
+    extra_context = {
+        'page_title': 'Update an Organization'
+    }
+    permission_required = 'organizations.change_organization'
+
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if obj.submit_user != self.request.user:
+            return HttpResponseForbidden('You are not Allowed to Edit this Organization')
+        else:
+            return super(UpdateOrganization, self).dispatch(request, *args, **kwargs)
 
 
 """
