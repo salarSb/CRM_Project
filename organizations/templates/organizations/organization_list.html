@@ -2,14 +2,48 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                {% for organization in object_list %}
-                    <p>{{ organization.name }}</p>
-                    {% for product in organization.products.all %}
-                        <p>{{ product }}</p>
-                    {% endfor %}
-                {% endfor %}
-            </div>
+            {% for organization in object_list %}
+                <div class="col-lg-4 mt-4">
+                    <div class="card card-margin">
+                        <div class="card-header no-border">
+                            <h5 class="card-title">{{ organization.name }}</h5>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="widget-49">
+                                <div class="widget-49-title-wrapper">
+                                    <div class="widget-49-date-primary">
+                                        <span class="widget-49-date-day">{{ organization.submit_date.day }}</span>
+                                        <span class="widget-49-date-month">{{ organization.submit_date | date:'F' }}</span>
+                                    </div>
+                                    <div class="widget-49-meeting-info">
+                                        <span class="widget-49-pro-title">Owner: {{ organization.owner_of_organization }}</span>
+                                        <span class="widget-49-meeting-time">Owner Phone: {{ organization.owner_phone }}</span>
+                                    </div>
+                                </div>
+                                <ul class="widget-49-meeting-points">
+                                    <li class="widget-49-meeting-item">
+                                        <span>Province: {{ organization.province }}</span></li>
+                                    <li class="widget-49-meeting-item">
+                                        <span>Phone: {{ organization.organization_phone }}</span></li>
+                                    <li class="widget-49-meeting-item">
+                                        <span>Products:
+                                            <ol>
+                                                {% for product in organization.products.all %}
+                                                    <li>{{ product }}</li>
+                                                {% endfor %}
+                                            </ol>
+                                        </span>
+                                    </li>
+                                </ul>
+                                <div class="widget-49-meeting-action">
+                                    <a href="{% url 'organizations:detail-organization' organization.pk %}"
+                                       class="btn btn-sm btn-flash-border-primary">Detail</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

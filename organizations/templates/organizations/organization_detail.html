@@ -1,0 +1,136 @@
+{% extends 'organizations/base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="team-single">
+            <div class="row">
+                <div class="col-lg-8 col-md-7">
+                    <div class="team-single-text padding-50px-left sm-no-padding-left">
+                        <h4 class="font-size38 sm-font-size32 xs-font-size30">{{ object.name }}</h4>
+                        <div class="contact-info-section margin-40px-tb">
+                            <ul class="list-style9 no-margin">
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="fas fa-graduation-cap text-orange"></i>
+                                            <strong class="margin-10px-left text-orange">Province:</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <p>{{ object.province }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="far fa-gem text-yellow"></i>
+                                            <strong class="margin-10px-left text-yellow">Phone:</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <p>{{ object.organization_phone }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="far fa-file text-lightred"></i>
+                                            <strong class="margin-10px-left text-lightred">Submit Date:</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <p>{{ object.submit_date }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="fas fa-map-marker-alt text-green"></i>
+                                            <strong class="margin-10px-left text-green">Number of Workers:</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <p>{{ object.number_of_workers }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="fas fa-mobile-alt text-purple"></i>
+                                            <strong class="margin-10px-left xs-margin-four-left text-purple">Submit
+                                                by:</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <p>{{ object.submit_user.get_full_name }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="fas fa-envelope text-pink"></i>
+                                            <strong class="margin-10px-left xs-margin-four-left text-pink">Owner
+                                                Email:</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <p><a href="javascript:void(0)">{{ object.owner_email }}</a></p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="fas fa-graduation-cap text-orange"></i>
+                                            <strong class="margin-10px-left text-orange">Owner Name:</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <p>{{ object.owner_of_organization }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="far fa-gem text-yellow"></i>
+                                            <strong class="margin-10px-left text-yellow">Owner Phone:</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <p>{{ object.owner_phone }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="far fa-file text-lightred"></i>
+                                            <strong class="margin-10px-left text-lightred">Products:</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            {% for product in object.products.all %}
+                                                <p>{{ product }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="far fa-file text-green"></i>
+                                            <strong class="margin-10px-left text-lightred">Recommended
+                                                Products:</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            {% for product in object.products.all %}
+                                                <p>{{ product.get_recommended_products }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

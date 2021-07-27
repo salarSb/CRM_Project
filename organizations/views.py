@@ -3,7 +3,7 @@ import itertools
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.http import HttpResponseForbidden
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, UpdateView
+from django.views.generic import CreateView, ListView, UpdateView, DetailView
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 
@@ -61,6 +61,13 @@ class UpdateOrganization(PermissionRequiredMixin, UpdateView):
             return HttpResponseForbidden('You are not Allowed to Edit this Organization')
         else:
             return super(UpdateOrganization, self).dispatch(request, *args, **kwargs)
+
+
+class DetailOrganization(DetailView):
+    model = Organization
+    extra_context = {
+        'page_title': 'Organization Detail'
+    }
 
 
 """

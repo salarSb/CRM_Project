@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from products.models import Product, OrganizationProduct
 from .validators import phone_validator
 
 
@@ -18,3 +19,8 @@ class Organization(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_recommended_products(self):
+        products = Product.objects.all()
+        products = products.filter(usable_for_organization_product=self.products)
+        return products
