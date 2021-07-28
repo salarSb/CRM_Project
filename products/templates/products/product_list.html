@@ -1,0 +1,30 @@
+{% extends 'organizations/base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% for product in object_list %}
+                <div class="col-md-5 mt-2">
+                    <div class="project-info-box mt-0">
+                        <h5>Technical Features</h5>
+                        <p class="mb-0">{{ product.technical_features }}</p>
+                    </div>
+                    <div class="project-info-box">
+                        <p><b>Client:</b> CUPCAKE CO</p>
+                        <p><b>Date:</b> 14.02.2020</p>
+                        <p><b>Designer:</b> James Doe</p>
+                        <p><b>Tools:</b> Illustrator</p>
+                        <p class="mb-0"><b>Budget:</b> $500</p>
+                    </div>
+                </div>
+                <div class="col-md-7 mt-2">
+                    <img src="{{ product.image.url }}" alt="product-image" class="rounded">
+                    <div class="project-info-box">
+                        <p><b>Categories:</b> Design, Illustration</p>
+                        <p><b>Skills:</b> Illustrator</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}

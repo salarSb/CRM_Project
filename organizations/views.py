@@ -2,6 +2,7 @@ import itertools
 
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.http import HttpResponseForbidden
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DetailView
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView
@@ -57,10 +58,13 @@ class UpdateOrganization(PermissionRequiredMixin, UpdateView):
 
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
-        if obj.submit_user != self.request.user:
-            return HttpResponseForbidden('You are not Allowed to Edit this Organization')
+        if request.user.is_authenticated:
+            if obj.submit_user != self.request.user:
+                return HttpResponseForbidden('You are not Allowed to Edit this Organization')
+            else:
+                return super(UpdateOrganization, self).dispatch(request, *args, **kwargs)
         else:
-            return super(UpdateOrganization, self).dispatch(request, *args, **kwargs)
+            return redirect('users:login')
 
 
 class DetailOrganization(DetailView):

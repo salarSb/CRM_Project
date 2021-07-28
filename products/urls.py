@@ -2,8 +2,9 @@ from django.urls import path
 
 from . import views
 
-app_name = 'Products'
+app_name = 'products'
 urlpatterns = [
+    path('products/', views.ListProduct.as_view(), name='products-list'),
 
     # DRF URLs
     path('api/v1/products/', views.ProductAPI.as_view(), name='products-api'),

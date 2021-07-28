@@ -15,7 +15,7 @@ class ProductAdmin(admin.ModelAdmin):
         }),
         ('Details', {
             'classes': ('collapse',),
-            'fields': ('catalog', 'technical_features', 'usable_for_organization_product',)
+            'fields': ('image', 'catalog', 'technical_features', 'usable_for_organization_product',)
         }),
     )
     list_editable = ['taxable']
