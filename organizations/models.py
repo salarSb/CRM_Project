@@ -21,6 +21,10 @@ class Organization(models.Model):
         return self.name
 
     def get_recommended_products(self):
-        products = Product.objects.all()
-        products = products.filter(usable_for_organization_product=self.products)
-        return products
+        related_product_list = list()
+        for organization_product in self.products.all():
+            organization_product_pk = organization_product.pk
+            related_product = OrganizationProduct.objects.get(pk=organization_product_pk)
+            for product in related_product.product_set.all():
+                related_product_list.append(product.name)
+        return ', '.join(set(related_product_list))

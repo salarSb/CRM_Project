@@ -72,7 +72,8 @@
                                                 Email:</strong>
                                         </div>
                                         <div class="col-md-7 col-7">
-                                            <p><a href="javascript:void(0)">{{ object.owner_email }}</a></p>
+                                            <p><a style="text-decoration: none"
+                                                  href="javascript:void(0)">{{ object.owner_email }}</a></p>
                                         </div>
                                     </div>
                                 </li>
@@ -119,9 +120,20 @@
                                                 Products:</strong>
                                         </div>
                                         <div class="col-md-7 col-7">
-                                            {% for product in object.products.all %}
-                                                <p>{{ product.get_recommended_products }}</p>
-                                            {% endfor %}
+                                            <p>{{ object.get_recommended_products }}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="fas fa-mobile-alt text-purple"></i>
+                                            <strong class="margin-10px-left xs-margin-four-left text-purple">Edit:</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <a style="text-decoration: none"
+                                               href="{% url 'organizations:update-organization' object.pk %}">Click
+                                                Here</a>
                                         </div>
                                     </div>
                                 </li>
