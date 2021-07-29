@@ -8,10 +8,10 @@ from products.serializers import ProductSerializer, OrganizationProductSerialize
 
 class ListProduct(ListView):
     model = Product
+    paginate_by = 1
     extra_context = {
         'page_title': 'Products'
     }
-    context_object_name = 'product'
 
 
 """

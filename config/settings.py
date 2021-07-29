@@ -128,6 +128,11 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = '/uploads/'
 MEDIA_ROOT = BASE_DIR / 'uploads'
+
+# language code en
+USE_THOUSAND_SEPARATOR = True
+NUMBER_GROUPING = 3
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
