@@ -26,12 +26,7 @@
                                     <li class="widget-49-meeting-item">
                                         <span>Phone: {{ organization.organization_phone }}</span></li>
                                     <li class="widget-49-meeting-item">
-                                        <span>Products:
-                                            <ol>
-                                                {% for product in organization.products.all %}
-                                                    <li>{{ product }}</li>
-                                                {% endfor %}
-                                            </ol>
+                                        <span>Submitted by: {{ organization.submit_user.get_full_name }}
                                         </span>
                                     </li>
                                 </ul>
