@@ -3,3 +3,4 @@ psycopg2-binary
 pillow
 django-widget-tweaks
 djangorestframework
+django-debug-toolbar

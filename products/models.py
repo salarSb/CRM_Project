@@ -18,7 +18,7 @@ class Product(models.Model):
 
 class OrganizationProduct(models.Model):
     name = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=20, unique=True, null=False, blank=False)
+    slug = models.SlugField(max_length=20, unique=True)
 
     def __str__(self):
         return self.name
