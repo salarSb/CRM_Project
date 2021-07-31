@@ -124,19 +124,21 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="row">
-                                        <div class="col-md-5 col-5">
-                                            <i class="fas fa-mobile-alt text-purple"></i>
-                                            <strong class="margin-10px-left xs-margin-four-left text-purple">Edit:</strong>
+                                {% if object.submit_user == request.user %}
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-5 col-5">
+                                                <i class="fas fa-mobile-alt text-purple"></i>
+                                                <strong class="margin-10px-left xs-margin-four-left text-purple">Edit:</strong>
+                                            </div>
+                                            <div class="col-md-7 col-7">
+                                                <a style="text-decoration: none"
+                                                   href="{% url 'organizations:update-organization' object.pk %}">Click
+                                                    Here</a>
+                                            </div>
                                         </div>
-                                        <div class="col-md-7 col-7">
-                                            <a style="text-decoration: none"
-                                               href="{% url 'organizations:update-organization' object.pk %}">Click
-                                                Here</a>
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
