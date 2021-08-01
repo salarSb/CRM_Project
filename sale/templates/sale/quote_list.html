@@ -29,7 +29,8 @@
                                 {% endfor %}
                             </td>
                             <td>
-                                <a href="#" type="button" class="btn btn-outline-pinterest btn-sm px-3">
+                                <a href="{% url 'sale:print-quote' quote.pk %}" type="button"
+                                   class="btn btn-outline-pinterest btn-sm px-3">
                                     <i class="fas fa-print"></i>
                                 </a>
                             </td>

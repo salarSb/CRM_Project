@@ -1,6 +1,8 @@
+from decimal import Decimal
+
 from django.contrib.auth import get_user_model
 from django.db import models
-from django.db.models import F, Sum
+from django.db.models import F, FloatField, Max, ExpressionWrapper
 
 
 class Quote(models.Model):
@@ -10,22 +12,21 @@ class Quote(models.Model):
     def __str__(self):
         return f'quote #{self.pk} submitted by {self.owner.get_full_name()}'
 
-    def get_price_without_tax(self):
-        return self.quoteitem_set.all().annotate(total_price=F('qty') * F('price')).aggregate((Sum('total_price')))[
-            'total_price__sum']
-
-    def get_price_with_tax(self):
-        return self.quoteitem_set.all().annotate(total_price=F('qty') * F('price') * (F('tax') / 100)).aggregate(
-            (Sum('total_price')))['total_price__sum']
+    def get_total_price(self):
+        price = self.quoteitem_set.all().annotate(total_price=ExpressionWrapper(
+            F('price') + ((F('tax') / Decimal('100.0')) * F('price')) - (
+                    (F('discount') / Decimal('100.0')) * F('price')), output_field=FloatField()), )
+        return price.aggregate(Max('total_price'))['total_price__max']
 
 
 class QuoteItem(models.Model):
     quote = models.ForeignKey(Quote, on_delete=models.CASCADE)
     organization = models.ForeignKey('organizations.Organization', on_delete=models.CASCADE)
-    product = models.ForeignKey('products.Product', on_delete=models.PROTECT)
+    product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
     qty = models.PositiveIntegerField(default=1)
     price = models.PositiveIntegerField()
     tax = models.PositiveIntegerField(default=9)
+    discount = models.PositiveIntegerField(default=0)
 
     def get_costumer_name(self):
         return self.organization.owner_of_organization

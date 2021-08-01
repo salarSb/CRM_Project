@@ -12,4 +12,4 @@ class QuoteItemForm(forms.ModelForm):
 
     class Meta:
         model = QuoteItem
-        fields = ['organization', 'product', 'qty', 'price', 'tax']
+        fields = ['organization', 'product', 'qty', 'price', 'tax', 'discount']

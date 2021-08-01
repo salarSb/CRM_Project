@@ -1,6 +1,8 @@
+import weasyprint
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.http import HttpResponse
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DetailView
 
 from sale.forms import QuoteItemForm
 from sale.models import QuoteItem, Quote
@@ -36,3 +38,14 @@ class CreateQuote(PermissionRequiredMixin, CreateView):
         quote_instance = Quote.objects.create(owner=self.request.user)
         form.instance.quote = quote_instance
         return super(CreateQuote, self).form_valid(form)
+
+
+class PrintQuote(LoginRequiredMixin, DetailView):
+    model = Quote
+
+    def get(self, request, *args, **kwargs):
+        g = super(PrintQuote, self).get(request, *args, **kwargs)
+        rendered_content = g.rendered_content
+        pdf = weasyprint.HTML(string=rendered_content, base_url='http://127.0.0.1:8000/').write_pdf()
+        response = HttpResponse(pdf, content_type='appLication/pdf')
+        return response
