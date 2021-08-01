@@ -35,7 +35,7 @@
                         <td>{{ item.organization }}</td>
                         <td>{{ item.product }}</td>
                         <td>{{ item.qty }}</td>
-                        <td>{{ item.price }}</td>
+                        <td>${{ item.price }}</td>
                         <td>{{ item.tax }}%</td>
                         <td>{{ item.discount }}%</td>
                     </tr>
@@ -44,7 +44,7 @@
                 <tfoot>
                 <tr>
                     <td colspan="7">Total Price with Tax and Discount :
-                        {{ object.get_total_price | floatformat:0 }}
+                        ${{ object.get_total_price | floatformat:0 }}
                     </td>
                 </tr>
                 </tfoot>
