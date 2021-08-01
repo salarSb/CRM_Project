@@ -13,10 +13,12 @@ class Quote(models.Model):
         return f'quote #{self.pk} submitted by {self.owner.get_full_name()}'
 
     def get_total_price(self):
-        price = self.quoteitem_set.all().annotate(total_price=ExpressionWrapper(
-            F('price') + ((F('tax') / Decimal('100.0')) * F('price')) - (
-                    (F('discount') / Decimal('100.0')) * F('price')), output_field=FloatField()), )
-        return price.aggregate(Max('total_price'))['total_price__max']
+        price = self.quoteitem_set.all().annotate(price=F('product__price') * F('qty')).aggregate(Max('price'))[
+            'price__max']
+        total_price = self.quoteitem_set.all().annotate(total_price=ExpressionWrapper(
+            price + ((F('tax') / Decimal('100.0')) * price) - (
+                    (F('discount') / Decimal('100.0')) * price), output_field=FloatField()), )
+        return total_price.aggregate(Max('total_price'))['total_price__max']
 
 
 class QuoteItem(models.Model):
@@ -24,9 +26,12 @@ class QuoteItem(models.Model):
     organization = models.ForeignKey('organizations.Organization', on_delete=models.CASCADE)
     product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
     qty = models.PositiveIntegerField(default=1)
-    price = models.PositiveIntegerField()
     tax = models.PositiveIntegerField(default=9)
     discount = models.PositiveIntegerField(default=0)
+
+    @property
+    def price(self):
+        return self.product.price * self.qty
 
     def get_costumer_name(self):
         return self.organization.owner_of_organization
