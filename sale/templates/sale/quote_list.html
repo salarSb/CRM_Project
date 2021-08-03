@@ -11,6 +11,7 @@
                         <th scope="col">Costumer Name</th>
                         <th scope="col">Products</th>
                         <th scope="col">Print</th>
+                        <th scope="col">Send Email</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -32,6 +33,12 @@
                                 <a href="{% url 'sale:print-quote' quote.pk %}" type="button"
                                    class="btn btn-outline-pinterest btn-sm px-3">
                                     <i class="fas fa-print"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'sale:send-email' quote.pk %}" type="button"
+                                   class="btn btn-outline-pinterest btn-sm px-3">
+                                    <i class="fas fa-envelope"></i>
                                 </a>
                             </td>
                         </tr>

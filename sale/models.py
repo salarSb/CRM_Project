@@ -1,8 +1,12 @@
 from decimal import Decimal
 
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator
 from django.db import models
 from django.db.models import F, FloatField, Max, ExpressionWrapper
+
+from sale import enums
 
 
 class Quote(models.Model):
@@ -27,7 +31,7 @@ class QuoteItem(models.Model):
     product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
     qty = models.PositiveIntegerField(default=1)
     tax = models.PositiveIntegerField(default=9)
-    discount = models.PositiveIntegerField(default=0)
+    discount = models.PositiveIntegerField(default=0, validators=[MaxValueValidator(100)])
 
     @property
     def price(self):
@@ -35,3 +39,13 @@ class QuoteItem(models.Model):
 
     def get_costumer_name(self):
         return self.organization.owner_of_organization
+
+
+class EmailHistory(models.Model):
+    receiver = models.ForeignKey('organizations.Organization', on_delete=models.PROTECT)
+    status = models.CharField(max_length=1, choices=enums.EmailStatuses.choices)
+    send_date = models.DateTimeField(auto_now_add=True)
+    sender = models.ForeignKey(User, on_delete=models.PROTECT)
+
+    def __str__(self):
+        return self.receiver.owner_of_organization

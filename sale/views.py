@@ -1,11 +1,16 @@
 import weasyprint
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect
+from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView
 
 from sale.forms import QuoteItemForm
 from sale.models import QuoteItem, Quote
+from sale.tasks import send_email_task
 
 
 class QuotesList(LoginRequiredMixin, ListView):
@@ -23,7 +28,7 @@ class QuotesList(LoginRequiredMixin, ListView):
 class CreateQuote(PermissionRequiredMixin, CreateView):
     model = QuoteItem
     form_class = QuoteItemForm
-    success_url = reverse_lazy('organizations:list-organizations')
+    success_url = reverse_lazy('sale:quotes')
     extra_context = {
         'page_title': 'Submit Quote'
     }
@@ -49,3 +54,17 @@ class PrintQuote(LoginRequiredMixin, DetailView):
         pdf = weasyprint.HTML(string=rendered_content, base_url='http://127.0.0.1:8000/').write_pdf()
         response = HttpResponse(pdf, content_type='appLication/pdf')
         return response
+
+
+@login_required
+def send_quote_to_organization_by_email(request, pk):
+    quote_instance = get_object_or_404(klass=Quote, pk=pk)
+    content = render_to_string('sale/quote_detail.html', {'object': quote_instance})
+    sender = request.user.username
+    receiver_queryset = quote_instance.quoteitem_set.all()
+    receiver = ''
+    for item in receiver_queryset:
+        receiver = item.organization.owner_email
+    send_email_task(content, sender, receiver)
+    messages.success(request, 'Email has been Sent')
+    return redirect(reverse_lazy('sale:quotes'))

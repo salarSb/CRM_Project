@@ -14,3 +14,7 @@ services:
       PGDATA: /db_data
     volumes:
       - CRMDbData:/db_data
+  broker:
+    image: "rabbitmq:alpine"
+    ports:
+      - 5672:5672

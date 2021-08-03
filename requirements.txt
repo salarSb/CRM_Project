@@ -5,3 +5,5 @@ django-widget-tweaks
 djangorestframework
 django-debug-toolbar
 weasyprint
+celery
+gevent
