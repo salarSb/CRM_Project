@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView
 
 from sale.forms import QuoteItemForm
-from sale.models import QuoteItem, Quote
+from sale.models import QuoteItem, Quote, FollowUp
 from sale.tasks import send_email_task
 
 
@@ -25,7 +25,7 @@ class QuotesList(LoginRequiredMixin, ListView):
         return qs
 
 
-class CreateQuote(PermissionRequiredMixin, CreateView):
+class CreateQuote(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = QuoteItem
     form_class = QuoteItemForm
     success_url = reverse_lazy('sale:quotes')
@@ -65,6 +65,20 @@ def send_quote_to_organization_by_email(request, pk):
     receiver = ''
     for item in receiver_queryset:
         receiver = item.organization.owner_email
-    send_email_task(content, sender, receiver)
+    send_email_task.delay(content, sender, receiver)
     messages.success(request, 'Email has been Sent')
     return redirect(reverse_lazy('sale:quotes'))
+
+
+class FollowUpCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    model = FollowUp
+    fields = ('description',)
+    success_url = reverse_lazy('organizations:detail-organization')
+    extra_context = {
+        'page_title': 'Follow Up'
+    }
+    permission_required = 'sale.add_followup'
+
+    def form_valid(self, form):
+        form.instance.registrar_user = self.request.user
+        return super(FollowUpCreateView, self).form_valid(form)

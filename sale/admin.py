@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from sale.models import Quote, QuoteItem, EmailHistory
+from sale.models import Quote, QuoteItem, EmailHistory, FollowUp
 
 
 class QuoteItemInline(admin.TabularInline):
@@ -18,3 +18,8 @@ class QuoteAdmin(admin.ModelAdmin):
 @admin.register(EmailHistory)
 class EmailHistoryAdmin(admin.ModelAdmin):
     list_display = ('receiver', 'status', 'send_date', 'sender')
+
+
+@admin.register(FollowUp)
+class FollowUpAdmin(admin.ModelAdmin):
+    list_display = ('registrar_user', 'submit_date', 'description')

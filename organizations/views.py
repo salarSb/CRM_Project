@@ -1,6 +1,6 @@
 import itertools
 
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.http import HttpResponseForbidden
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -31,7 +31,7 @@ class ListOrganization(ListView):
         return qs
 
 
-class CreateOrganization(PermissionRequiredMixin, CreateView):
+class CreateOrganization(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Organization
     fields = ('province', 'name', 'organization_phone', 'number_of_workers', 'products', 'owner_of_organization',
               'owner_phone', 'owner_email')
@@ -46,7 +46,7 @@ class CreateOrganization(PermissionRequiredMixin, CreateView):
         return super(CreateOrganization, self).form_valid(form)
 
 
-class UpdateOrganization(PermissionRequiredMixin, UpdateView):
+class UpdateOrganization(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Organization
     fields = ('province', 'name', 'organization_phone', 'number_of_workers', 'products', 'owner_of_organization',
               'owner_phone', 'owner_email')

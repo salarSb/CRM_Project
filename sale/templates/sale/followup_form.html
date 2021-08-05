@@ -1,0 +1,17 @@
+{% extends 'organizations/base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-2">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id_description">Description</label>
+                        {% render_field form.description class="form-control" %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

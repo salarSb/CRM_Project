@@ -143,7 +143,7 @@ INTERNAL_IPS = [
 ]
 
 """
-for celery run on windows first install gevent package then run the command celery -A <module> worker -l info -P gevent
+to use celery on windows first install gevent package then run the command: celery -A <module> worker -l info -P gevent
 """
 CELERY_BROKER_URL = 'pyamqp://guest@localhost//'
 CELERY_ACCEPT_CONTENT = ['application/json']

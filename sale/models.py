@@ -49,3 +49,13 @@ class EmailHistory(models.Model):
 
     def __str__(self):
         return self.receiver.owner_of_organization
+
+    class Meta:
+        verbose_name = 'Email History'
+        verbose_name_plural = 'Email Histories'
+
+
+class FollowUp(models.Model):
+    registrar_user = models.ForeignKey(User, on_delete=models.PROTECT)
+    submit_date = models.DateTimeField(auto_now_add=True)
+    description = models.TextField()
