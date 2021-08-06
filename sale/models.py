@@ -57,5 +57,6 @@ class EmailHistory(models.Model):
 
 class FollowUp(models.Model):
     registrar_user = models.ForeignKey(User, on_delete=models.PROTECT)
+    organization = models.ForeignKey('organizations.Organization', on_delete=models.PROTECT)
     submit_date = models.DateTimeField(auto_now_add=True)
     description = models.TextField()

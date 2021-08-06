@@ -138,16 +138,18 @@
                                             </div>
                                         </div>
                                     </li>
+                                {% endif %}
+                                {% if object.followup_set.all %}
                                     <li>
                                         <div class="row">
                                             <div class="col-md-5 col-5">
                                                 <i class="fas fa-edit text-purple"></i>
                                                 <strong class="margin-10px-left xs-margin-four-left text-purple">Follow
-                                                    Up:</strong>
+                                                    Ups:</strong>
                                             </div>
                                             <div class="col-md-7 col-7">
                                                 <a style="text-decoration: none"
-                                                   href="{% url 'sale:create-followup' %}">Click
+                                                   href="{% url 'sale:followup-list' %}">Click
                                                     Here</a>
                                             </div>
                                         </div>

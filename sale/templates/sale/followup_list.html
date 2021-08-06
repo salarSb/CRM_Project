@@ -1,0 +1,33 @@
+{% extends 'organizations/base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-2">
+                <table class="table align-middle">
+                    <thead>
+                    <tr>
+                        <th scope="col">Number</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">registrar_user</th>
+                        <th scope="col">organization</th>
+                        <th scope="col">description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for followup in object_list %}
+                        <tr>
+                            <th scope="row"><a
+                                    href="{% url 'sale:followup-detail' followup.pk %}">{{ forloop.counter }}</a></th>
+                            <td>{{ followup.submit_date }}</td>
+                            <td>{{ followup.registrar_user.get_full_name }}</td>
+                            <td>{{ followup.organization.name }}</td>
+                            <td>{{ followup.description | truncatewords:5 | linebreaks }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% include 'products/pagination.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -18,8 +18,10 @@ class QuoteAdmin(admin.ModelAdmin):
 @admin.register(EmailHistory)
 class EmailHistoryAdmin(admin.ModelAdmin):
     list_display = ('receiver', 'status', 'send_date', 'sender')
+    list_filter = ('status', 'send_date',)
 
 
 @admin.register(FollowUp)
 class FollowUpAdmin(admin.ModelAdmin):
-    list_display = ('registrar_user', 'submit_date', 'description')
+    list_display = ('registrar_user', 'organization', 'submit_date', 'description')
+    list_per_page = 5

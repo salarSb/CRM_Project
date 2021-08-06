@@ -7,11 +7,43 @@
                 <form method="POST">
                     {% csrf_token %}
                     <div class="form-group">
+                        <label for="id_organization">Organization</label>
+                        {% render_field form.organization attr="required" class="form-control" %}
+                    </div>
+                    <div class="form-group">
                         <label for="id_description">Description</label>
-                        {% render_field form.description class="form-control" %}
+                        {% render_field form.description attr="required" class="form-control" %}
                     </div>
                 </form>
+                <div>
+                    <button id="send_followup" type="submit" class="btn btn-outline-success btn-sm">Submit</button>
+                </div>
             </div>
         </div>
     </div>
+{% endblock %}
+{% block page_script %}
+    <script>
+        $(document).ready(function () {
+            $('#send_followup').click(function () {
+                let organization = $('#id_organization').val()
+                let description = $('#id_description').val()
+                $.ajax({
+                    url: '{% url 'sale:create-followup' %}',
+                    method: 'POST',
+                    data: {
+                        csrfmiddlewaretoken: '{{ csrf_token }}',
+                        organization: organization,
+                        description: description
+                    },
+                    success: function () {
+                        alert('Follow Up has been saved')
+                    },
+                    error: function () {
+                        alert('invalid data')
+                    }
+                })
+            })
+        })
+    </script>
 {% endblock %}
