@@ -7,3 +7,4 @@ django-debug-toolbar
 weasyprint
 celery
 gevent
+djangorestframework-simplejwt

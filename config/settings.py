@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+from datetime import timedelta
+
 from config.secret_settings import *
 from pathlib import Path
 
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'rest_framework',
+    'rest_framework_simplejwt',
     'organizations.apps.OrganizationsConfig',
     'products.apps.ProductsConfig',
     'sale.apps.SaleConfig',
@@ -148,3 +151,9 @@ to use celery on windows first install gevent package then run the command: cele
 CELERY_BROKER_URL = 'pyamqp://guest@localhost//'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
