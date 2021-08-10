@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMix
 from django.http import HttpResponseForbidden
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
+from django.utils.translation import ugettext_lazy as _
 from django.views.generic import CreateView, ListView, UpdateView, DetailView
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView
 from rest_framework.permissions import IsAuthenticated
@@ -16,7 +17,7 @@ class ListOrganization(ListView):
     model = Organization
     template_name = 'organizations/organization_list.html'
     extra_context = {
-        'page_title': 'Organizations'
+        'page_title': _('Organizations')
     }
 
     def get_queryset(self):
@@ -37,7 +38,7 @@ class CreateOrganization(LoginRequiredMixin, PermissionRequiredMixin, CreateView
               'owner_phone', 'owner_email')
     success_url = reverse_lazy('organizations:list-organizations')
     extra_context = {
-        'page_title': 'Create an Organization'
+        'page_title': _('Create an Organization')
     }
     permission_required = 'organizations.add_organization'
 
@@ -52,7 +53,7 @@ class UpdateOrganization(LoginRequiredMixin, PermissionRequiredMixin, UpdateView
               'owner_phone', 'owner_email')
     success_url = reverse_lazy('organizations:list-organizations')
     extra_context = {
-        'page_title': 'Update an Organization'
+        'page_title': _('Update an Organization')
     }
     permission_required = 'organizations.change_organization'
 
@@ -70,7 +71,7 @@ class UpdateOrganization(LoginRequiredMixin, PermissionRequiredMixin, UpdateView
 class DetailOrganization(DetailView):
     model = Organization
     extra_context = {
-        'page_title': 'Organization Detail'
+        'page_title': _('Organization Detail')
     }
 
 

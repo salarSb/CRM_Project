@@ -1,0 +1,215 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-10 18:37+0430\n"
+"PO-Revision-Date: 2021-08-10 18:21+0430\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: fa\n"
+"X-Generator: Poedit 3.0\n"
+
+#: .\sale\models.py:14
+msgid "owner"
+msgstr "مالک"
+
+#: .\sale\models.py:15
+msgid "created on"
+msgstr "تاریخ ثبت"
+
+#: .\sale\models.py:30
+msgid "quote"
+msgstr "پیش فاکتور"
+
+#: .\sale\models.py:32 .\sale\models.py:63
+#: .\sale\templates\sale\followup_list.html:13
+msgid "organization"
+msgstr "سازمان"
+
+#: .\sale\models.py:33
+msgid "product"
+msgstr "محصول"
+
+#: .\sale\models.py:34
+msgid "quantity"
+msgstr "تعداد"
+
+#: .\sale\models.py:35
+msgid "tax"
+msgstr "مالیات"
+
+#: .\sale\models.py:36 .\sale\templates\sale\quote_detail.html:29
+msgid "discount"
+msgstr "تخفیف"
+
+#: .\sale\models.py:47
+msgid "receiver"
+msgstr "گیرنده"
+
+#: .\sale\models.py:48
+msgid "status"
+msgstr "وضعیت"
+
+#: .\sale\models.py:49
+msgid "send date"
+msgstr "تاریخ ارسال"
+
+#: .\sale\models.py:50
+msgid "sender"
+msgstr "فرستنده"
+
+#: .\sale\models.py:56
+msgid "Email History"
+msgstr "تاریخچه ایمیل"
+
+#: .\sale\models.py:57
+msgid "Email Histories"
+msgstr "تاریخچه ایمیل ها"
+
+#: .\sale\models.py:61 .\sale\templates\sale\followup_list.html:12
+msgid "registrar user"
+msgstr "کاربر ثبت کننده"
+
+#: .\sale\models.py:64
+msgid "submit date"
+msgstr "تاریخ ثبت"
+
+#: .\sale\models.py:65 .\sale\templates\sale\followup_list.html:14
+msgid "description"
+msgstr "توضیح"
+
+#: .\sale\templates\sale\followup_detail.html:9
+msgid "Information of your Follow Up"
+msgstr "اطلاعات پیگیری شما"
+
+#: .\sale\templates\sale\followup_detail.html:16
+msgid "Registrar User"
+msgstr "کاربر ثبت کننده"
+
+#: .\sale\templates\sale\followup_detail.html:27
+#: .\sale\templates\sale\followup_form.html:11
+#: .\sale\templates\sale\quote_detail.html:24
+#: .\sale\templates\sale\quoteitem_form.html:11
+msgid "Organization"
+msgstr "سازمان"
+
+#: .\sale\templates\sale\followup_detail.html:38
+msgid "Submit Date"
+msgstr "تاریخ ثبت"
+
+#: .\sale\templates\sale\followup_detail.html:49
+#: .\sale\templates\sale\followup_form.html:15
+msgid "Description"
+msgstr "توضیح"
+
+#: .\sale\templates\sale\followup_form.html:21
+#: .\sale\templates\sale\quoteitem_form.html:32
+msgid "Submit"
+msgstr "ثبت"
+
+#: .\sale\templates\sale\followup_form.html:42
+msgid "Follow Up has been saved"
+msgstr "پیگیری با موفقیت ثبت شد"
+
+#: .\sale\templates\sale\followup_form.html:45
+msgid "invalid data"
+msgstr "اطلاعات ناصحیح"
+
+#: .\sale\templates\sale\followup_list.html:10
+msgid "Number"
+msgstr "شماره"
+
+#: .\sale\templates\sale\followup_list.html:11
+#: .\sale\templates\sale\quote_detail.html:17
+#: .\sale\templates\sale\quote_list.html:11
+msgid "Date"
+msgstr "تاریخ"
+
+#: .\sale\templates\sale\quote_detail.html:8
+msgid "quote pdf"
+msgstr "پی دی اف برای پیش فاکتور"
+
+#: .\sale\templates\sale\quote_detail.html:15
+msgid "Submitted by"
+msgstr "ثبت شده توسط"
+
+#: .\sale\templates\sale\quote_detail.html:23
+#: .\sale\templates\sale\quote_list.html:12
+msgid "Costumer Name"
+msgstr "نام مشتری"
+
+#: .\sale\templates\sale\quote_detail.html:25
+#: .\sale\templates\sale\quoteitem_form.html:15
+msgid "Product"
+msgstr "محصول"
+
+#: .\sale\templates\sale\quote_detail.html:26
+#: .\sale\templates\sale\quote_list.html:30
+#: .\sale\templates\sale\quoteitem_form.html:19
+msgid "Quantity"
+msgstr "تعداد"
+
+#: .\sale\templates\sale\quote_detail.html:27
+msgid "price"
+msgstr "قیمت"
+
+#: .\sale\templates\sale\quote_detail.html:28
+msgid "Tax"
+msgstr "مالیات"
+
+#: .\sale\templates\sale\quote_detail.html:47
+msgid "Total Price with Tax and Discount"
+msgstr "قیمت کل با احتساب مالیات و تخفیف"
+
+#: .\sale\templates\sale\quote_list.html:10
+msgid "Quote Number"
+msgstr "شماره پیش فاکتور"
+
+#: .\sale\templates\sale\quote_list.html:13
+msgid "Products"
+msgstr "محصولات"
+
+#: .\sale\templates\sale\quote_list.html:14
+msgid "Print"
+msgstr "چاپ"
+
+#: .\sale\templates\sale\quote_list.html:15
+msgid "Send Email"
+msgstr "ارسال ایمیل"
+
+#: .\sale\templates\sale\quoteitem_form.html:23
+msgid "Tax (will be calculate by percent)"
+msgstr "مالیات (با درصد محاسبه میشود)"
+
+#: .\sale\templates\sale\quoteitem_form.html:27
+msgid "discount (will be calculate by percent)"
+msgstr "تخفیف (با درصد محاسبه میشود)"
+
+#: .\sale\views.py:20
+msgid "Quotes"
+msgstr "پیش فاکتور ها"
+
+#: .\sale\views.py:34
+msgid "Submit Quote"
+msgstr "ثبت پیش فاکتور"
+
+#: .\sale\views.py:70
+msgid "Email has been Sent"
+msgstr "ایمیل با موفقیت ارسال شد"
+
+#: .\sale\views.py:79
+msgid "Follow Up"
+msgstr "پیگیری"
+
+#: .\sale\views.py:105 .\sale\views.py:117
+msgid "FollowUp-List"
+msgstr "لیست پیگیری ها"

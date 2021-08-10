@@ -1,5 +1,6 @@
 {% extends 'organizations/base.html' %}
 {% load widget_tweaks %}
+{% load i18n %}
 {% block content %}
     <div class="container">
         <div class="row">
@@ -7,39 +8,40 @@
                 <form method="POST">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="id_province">Province</label>
+                        <label for="id_province">{% trans 'Province' %}</label>
                         {% render_field form.province class="form-control" %}
                     </div>
                     <div class="form-group">
-                        <label for="id_name">Organization Name</label>
+                        <label for="id_name">{% trans 'Organization Name' %}</label>
                         {% render_field form.name class="form-control" %}
                     </div>
                     <div class="form-group">
-                        <label for="id_organization_phone">Organization Phone</label>
+                        <label for="id_organization_phone">{% trans 'Organization Phone' %}</label>
                         {% render_field form.organization_phone class="form-control" %}
                     </div>
                     <div class="form-group">
-                        <label for="id_number_of_workers">Number Of Workers</label>
+                        <label for="id_number_of_workers">{% trans 'Number Of Workers' %}</label>
                         {% render_field form.number_of_workers class="form-control" %}
                     </div>
                     <div class="form-group">
-                        <label for="id_products">Manufactured Products</label>
+                        <label for="id_products">{% trans 'Manufactured Products' %}</label>
                         {% render_field form.products class="form-control" %}
                     </div>
                     <div class="form-group">
-                        <label for="id_owner_of_organization">Owner of Organization</label>
+                        <label for="id_owner_of_organization">{% trans 'Owner of Organization' %}</label>
                         {% render_field form.owner_of_organization class="form-control" %}
                     </div>
                     <div class="form-group">
-                        <label for="id_owner_phone">Owner Phone</label>
+                        <label for="id_owner_phone">{% trans 'Owner Phone' %}</label>
                         {% render_field form.owner_phone class="form-control" %}
                     </div>
                     <div class="form-group">
-                        <label for="id_owner_email">Owner Email</label>
+                        <label for="id_owner_email">{% trans 'Owner Email' %}</label>
                         {% render_field form.owner_email class="form-control" %}
                     </div>
                     <div>
-                        <button type="submit" value="Submit" class="btn btn-outline-success btn-sm">Submit</button>
+                        <button type="submit" value="Submit"
+                                class="btn btn-outline-success btn-sm">{% trans 'Submit' %}</button>
                     </div>
                 </form>
             </div>

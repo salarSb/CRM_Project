@@ -1,4 +1,5 @@
 {% extends 'organizations/base.html' %}
+{% load i18n %}
 {% block content %}
     <div class="container">
         <div class="row">
@@ -16,23 +17,23 @@
                                         <span class="widget-49-date-month">{{ organization.submit_date | date:'F' }}</span>
                                     </div>
                                     <div class="widget-49-meeting-info">
-                                        <span class="widget-49-pro-title">Owner: {{ organization.owner_of_organization }}</span>
-                                        <span class="widget-49-meeting-time">Owner Phone: {{ organization.owner_phone }}</span>
+                                        <span class="widget-49-pro-title">{% trans 'Owner' %}: {{ organization.owner_of_organization }}</span>
+                                        <span class="widget-49-meeting-time">{% trans 'Owner Phone' %}: {{ organization.owner_phone }}</span>
                                     </div>
                                 </div>
                                 <ul class="widget-49-meeting-points">
                                     <li class="widget-49-meeting-item">
-                                        <span>Province: {{ organization.province }}</span></li>
+                                        <span>{% trans 'Province' %}: {{ organization.province }}</span></li>
                                     <li class="widget-49-meeting-item">
-                                        <span>Phone: {{ organization.organization_phone }}</span></li>
+                                        <span>{% trans 'Phone' %}: {{ organization.organization_phone }}</span></li>
                                     <li class="widget-49-meeting-item">
-                                        <span>Submitted by: {{ organization.submit_user.get_full_name }}
+                                        <span>{% trans 'Submitted by' %}: {{ organization.submit_user.get_full_name }}
                                         </span>
                                     </li>
                                 </ul>
                                 <div class="widget-49-meeting-action">
                                     <a href="{% url 'organizations:detail-organization' organization.pk %}"
-                                       class="btn btn-sm btn-flash-border-primary">Detail</a>
+                                       class="btn btn-sm btn-flash-border-primary">{% trans 'Detail' %}</a>
                                 </div>
                             </div>
                         </div>

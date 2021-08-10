@@ -1,3 +1,4 @@
+from django.utils.translation import ugettext_lazy as _
 from django.views.generic import ListView
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -10,7 +11,7 @@ class ListProduct(ListView):
     model = Product
     paginate_by = 1
     extra_context = {
-        'page_title': 'Products'
+        'page_title': _('Products')
     }
 
 

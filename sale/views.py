@@ -6,6 +6,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
+from django.utils.translation import ugettext_lazy as _
 from django.views.generic import CreateView, ListView, DetailView
 
 from sale.forms import QuoteItemForm, FollowUpForm
@@ -16,7 +17,7 @@ from sale.tasks import send_email_task
 class QuotesList(LoginRequiredMixin, ListView):
     model = Quote
     extra_context = {
-        'page_title': 'Quotes'
+        'page_title': _('Quotes')
     }
 
     def get_queryset(self):
@@ -30,7 +31,7 @@ class CreateQuote(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     form_class = QuoteItemForm
     success_url = reverse_lazy('sale:quotes')
     extra_context = {
-        'page_title': 'Submit Quote'
+        'page_title': _('Submit Quote')
     }
     permission_required = ['sale.add_quote', 'sale.add_quoteitem']
 
@@ -66,7 +67,7 @@ def send_quote_to_organization_by_email(request, pk):
     for item in receiver_queryset:
         receiver = item.organization.owner_email
     send_email_task.delay(content, sender, receiver)
-    messages.success(request, 'Email has been Sent')
+    messages.success(request, _('Email has been Sent'))
     return redirect(reverse_lazy('sale:quotes'))
 
 
@@ -75,7 +76,7 @@ class FollowUpCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView
     form_class = FollowUpForm
     success_url = reverse_lazy('organizations:detail-organization')
     extra_context = {
-        'page_title': 'Follow Up'
+        'page_title': _('Follow Up')
     }
     permission_required = 'sale.add_followup'
 
@@ -101,7 +102,7 @@ class FollowUpListView(LoginRequiredMixin, ListView):
     model = FollowUp
     paginate_by = 8
     extra_context = {
-        'page_title': 'FollowUp-List'
+        'page_title': _('FollowUp-List')
     }
 
     def get_queryset(self):
@@ -113,33 +114,5 @@ class FollowUpListView(LoginRequiredMixin, ListView):
 class FollowUpDetailView(LoginRequiredMixin, DetailView):
     model = FollowUp
     extra_context = {
-        'page_title': 'FollowUp-Detail'
+        'page_title': _('FollowUp-List')
     }
-# @login_required
-# @require_GET
-# def show_followup_form(request):
-#     form = FollowUpForm()
-#     form.fields['organization'].queryset = Organization.objects.filter(submit_user=request.user)
-#     return render(request, 'sale/followup_form.html', {'form': form})
-#
-#
-# @login_required
-# @require_POST
-# def add_followup(request):
-#     """
-#     add follow up for a organization to make sale easier
-#     """
-#     form = FollowUpForm(request.POST)
-#     if form.is_valid():
-#         form.instance.registrar_user = request.user
-#         entry_object = form.save()
-#         return JsonResponse(data={
-#             'success': True,
-#             'pk': entry_object.pk,
-#             'organization': entry_object.organization,
-#             'description': entry_object.description
-#         }, status=201)
-#     else:
-#         return JsonResponse(data={
-#             'success': False,
-#         }, status=400)

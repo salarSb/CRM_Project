@@ -1,6 +1,7 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html {% if LANGUAGE_BIDI %}lang="fa" dir="rtl" {% endif %} lang='en' dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,13 +20,14 @@
             {% csrf_token %}
             <div class="username center">
                 <i class='fa fa-user-alt'></i>
-                <input id="username" name="username" type="text" placeholder="Enter Username" required>
+                <input id="username" name="username" type="text" placeholder="{% trans 'Enter Username' %}" required>
             </div>
             <div class="password center">
                 <i class="fas fa-key"></i>
-                <input id="password" name="password" type="password" placeholder="Enter Password" required>
+                <input id="password" name="password" type="password" placeholder="{% trans 'Enter Password' %}"
+                       required>
             </div>
-            <button type="submit" class="btn">Login</button>
+            <button type="submit" class="btn">{% trans 'Login' %}</button>
         </form>
     </div>
 </div>

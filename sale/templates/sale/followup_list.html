@@ -1,4 +1,5 @@
 {% extends 'organizations/base.html' %}
+{% load i18n %}
 {% block content %}
     <div class="container">
         <div class="row">
@@ -6,11 +7,11 @@
                 <table class="table align-middle">
                     <thead>
                     <tr>
-                        <th scope="col">Number</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">registrar_user</th>
-                        <th scope="col">organization</th>
-                        <th scope="col">description</th>
+                        <th scope="col">{% trans 'Number' %}</th>
+                        <th scope="col">{% trans 'Date' %}</th>
+                        <th scope="col">{% trans 'registrar user' %}</th>
+                        <th scope="col">{% trans 'organization' %}</th>
+                        <th scope="col">{% trans 'description' %}</th>
                     </tr>
                     </thead>
                     <tbody>

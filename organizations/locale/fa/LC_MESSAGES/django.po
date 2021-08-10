@@ -1,0 +1,209 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-10 18:37+0430\n"
+"PO-Revision-Date: 2021-08-10 17:36+0430\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: fa\n"
+"X-Generator: Poedit 3.0\n"
+
+#: .\organizations\models.py:10
+msgid "province"
+msgstr "استان"
+
+#: .\organizations\models.py:11
+msgid "province name"
+msgstr "نام استان"
+
+#: .\organizations\models.py:12
+msgid "organization phone"
+msgstr "تلفن سازمان"
+
+#: .\organizations\models.py:13
+msgid "number of workers"
+msgstr "تعداد کارگران"
+
+#: .\organizations\models.py:14
+msgid "products"
+msgstr "محصولات"
+
+#: .\organizations\models.py:15
+msgid "owner of organization"
+msgstr "صاحب سازمان"
+
+#: .\organizations\models.py:16
+msgid "owner phone"
+msgstr "تلفن مالک"
+
+#: .\organizations\models.py:17
+msgid "owner email"
+msgstr "ایمیل مالک"
+
+#: .\organizations\models.py:18
+msgid "submit date"
+msgstr "تاریخ ثبت سازمان"
+
+#: .\organizations\models.py:19
+msgid "submit user"
+msgstr "کاربر ثبت کننده"
+
+#: .\organizations\templates\organizations\base.html:12
+msgid "My CRM"
+msgstr "ارتباط با مشتری"
+
+#: .\organizations\templates\organizations\base.html:17
+#: .\organizations\views.py:20
+msgid "Organizations"
+msgstr "سازمان ها"
+
+#: .\organizations\templates\organizations\base.html:26
+msgid "Create Organization"
+msgstr "ثبت سازمان جدید"
+
+#: .\organizations\templates\organizations\base.html:31
+msgid "Company Products"
+msgstr "محصولات انجمن"
+
+#: .\organizations\templates\organizations\base.html:37
+msgid "Quotes"
+msgstr "پیش فاکتور ها"
+
+#: .\organizations\templates\organizations\base.html:42
+msgid "Submit Quote"
+msgstr "ثبت پیش فاکتور"
+
+#: .\organizations\templates\organizations\base.html:47
+msgid "Follow Ups"
+msgstr "پیگیری ها"
+
+#: .\organizations\templates\organizations\base.html:52
+msgid "Create Follow Up"
+msgstr "ثبت پیگیری"
+
+#: .\organizations\templates\organizations\base.html:57
+msgid "Logout"
+msgstr "خروج"
+
+#: .\organizations\templates\organizations\base.html:62
+msgid "Login"
+msgstr "ورود"
+
+#: .\organizations\templates\organizations\organization_detail.html:16
+#: .\organizations\templates\organizations\organization_form.html:11
+#: .\organizations\templates\organizations\organization_list.html:26
+msgid "Province"
+msgstr "استان"
+
+#: .\organizations\templates\organizations\organization_detail.html:27
+#: .\organizations\templates\organizations\organization_list.html:28
+msgid "Phone"
+msgstr "تلفن سازمان"
+
+#: .\organizations\templates\organizations\organization_detail.html:38
+msgid "Submit Date"
+msgstr "تاریخ ثبت سازمان"
+
+#: .\organizations\templates\organizations\organization_detail.html:49
+msgid "Number of Workers"
+msgstr "تعداد کارگران"
+
+#: .\organizations\templates\organizations\organization_detail.html:60
+msgid "Submit by"
+msgstr "ثبت شده توسط"
+
+#: .\organizations\templates\organizations\organization_detail.html:71
+#: .\organizations\templates\organizations\organization_form.html:39
+msgid "Owner Email"
+msgstr "ایمیل مالک"
+
+#: .\organizations\templates\organizations\organization_detail.html:83
+msgid "Owner Name"
+msgstr "نام مالک شرکت"
+
+#: .\organizations\templates\organizations\organization_detail.html:94
+#: .\organizations\templates\organizations\organization_form.html:35
+#: .\organizations\templates\organizations\organization_list.html:21
+msgid "Owner Phone"
+msgstr "تلفن مالک"
+
+#: .\organizations\templates\organizations\organization_detail.html:105
+msgid "Products"
+msgstr "محصولات"
+
+#: .\organizations\templates\organizations\organization_detail.html:118
+msgid "Recommended Products"
+msgstr "محصولات پیشنهادی"
+
+#: .\organizations\templates\organizations\organization_detail.html:130
+msgid "Edit"
+msgstr "ویرایش"
+
+#: .\organizations\templates\organizations\organization_detail.html:134
+msgid "Click Here"
+msgstr "اینجا کلیک کنید"
+
+#: .\organizations\templates\organizations\organization_form.html:15
+msgid "Organization Name"
+msgstr "نام سازمان"
+
+#: .\organizations\templates\organizations\organization_form.html:19
+msgid "Organization Phone"
+msgstr "تلفن سازمان"
+
+#: .\organizations\templates\organizations\organization_form.html:23
+msgid "Number Of Workers"
+msgstr "تعداد کارگران"
+
+#: .\organizations\templates\organizations\organization_form.html:27
+msgid "Manufactured Products"
+msgstr "محصولات تولیدی سازمان"
+
+#: .\organizations\templates\organizations\organization_form.html:31
+msgid "Owner of Organization"
+msgstr "صاحب سازمان"
+
+#: .\organizations\templates\organizations\organization_form.html:44
+msgid "Submit"
+msgstr "ثبت"
+
+#: .\organizations\templates\organizations\organization_list.html:20
+msgid "Owner"
+msgstr "مالک"
+
+#: .\organizations\templates\organizations\organization_list.html:30
+msgid "Submitted by"
+msgstr "ثبت شده توسط"
+
+#: .\organizations\templates\organizations\organization_list.html:36
+msgid "Detail"
+msgstr "جزئیات"
+
+#: .\organizations\validators.py:10
+msgid ""
+"Enter a valid mobile number. This value may contain numbers only, and must "
+"be exactly 11 digits starting with \"09\""
+msgstr ""
+"شماره تلفن صحیح نیست، فقط شامل اعداد و دقیقا 11 رقم که با 09 آغاز میشود"
+
+#: .\organizations\views.py:41
+msgid "Create an Organization"
+msgstr "ثبت سازمان جدید"
+
+#: .\organizations\views.py:56
+msgid "Update an Organization"
+msgstr "ویرایش سازمان"
+
+#: .\organizations\views.py:74
+msgid "Organization Detail"
+msgstr "جزئیات سازمان"

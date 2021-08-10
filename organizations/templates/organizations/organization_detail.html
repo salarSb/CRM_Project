@@ -1,4 +1,5 @@
 {% extends 'organizations/base.html' %}
+{% load i18n %}
 {% block content %}
     <div class="container">
         <div class="team-single">
@@ -12,7 +13,7 @@
                                     <div class="row">
                                         <div class="col-md-5 col-5">
                                             <i class="fa fa-map text-orange" aria-hidden="true"></i>
-                                            <strong class="margin-10px-left text-orange">Province:</strong>
+                                            <strong class="margin-10px-left text-orange">{% trans 'Province' %}:</strong>
                                         </div>
                                         <div class="col-md-7 col-7">
                                             <p>{{ object.province }}</p>
@@ -23,7 +24,7 @@
                                     <div class="row">
                                         <div class="col-md-5 col-5">
                                             <i class="fas fa-mobile-alt text-yellow"></i>
-                                            <strong class="margin-10px-left text-yellow">Phone:</strong>
+                                            <strong class="margin-10px-left text-yellow">{% trans 'Phone' %}:</strong>
                                         </div>
                                         <div class="col-md-7 col-7">
                                             <p>{{ object.organization_phone }}</p>
@@ -34,7 +35,7 @@
                                     <div class="row">
                                         <div class="col-md-5 col-5">
                                             <i class="fa fa-calendar text-lightred" aria-hidden="true"></i>
-                                            <strong class="margin-10px-left text-lightred">Submit Date:</strong>
+                                            <strong class="margin-10px-left text-lightred">{% trans 'Submit Date' %}:</strong>
                                         </div>
                                         <div class="col-md-7 col-7">
                                             <p>{{ object.submit_date }}</p>
@@ -45,7 +46,7 @@
                                     <div class="row">
                                         <div class="col-md-5 col-5">
                                             <i class="fas fa-users text-green"></i>
-                                            <strong class="margin-10px-left text-green">Number of Workers:</strong>
+                                            <strong class="margin-10px-left text-green">{% trans 'Number of Workers' %}:</strong>
                                         </div>
                                         <div class="col-md-7 col-7">
                                             <p>{{ object.number_of_workers }}</p>
@@ -56,8 +57,7 @@
                                     <div class="row">
                                         <div class="col-md-5 col-5">
                                             <i class="fas fa-user text-purple"></i>
-                                            <strong class="margin-10px-left xs-margin-four-left text-purple">Submit
-                                                by:</strong>
+                                            <strong class="margin-10px-left xs-margin-four-left text-purple">{% trans 'Submit by' %}:</strong>
                                         </div>
                                         <div class="col-md-7 col-7">
                                             <p>{{ object.submit_user.get_full_name }}</p>
@@ -68,8 +68,7 @@
                                     <div class="row">
                                         <div class="col-md-5 col-5">
                                             <i class="fas fa-envelope text-pink"></i>
-                                            <strong class="margin-10px-left xs-margin-four-left text-pink">Owner
-                                                Email:</strong>
+                                            <strong class="margin-10px-left xs-margin-four-left text-pink">{% trans 'Owner Email' %}:</strong>
                                         </div>
                                         <div class="col-md-7 col-7">
                                             <p><a style="text-decoration: none"
@@ -81,7 +80,7 @@
                                     <div class="row">
                                         <div class="col-md-5 col-5">
                                             <i class="fas fa-user text-orange"></i>
-                                            <strong class="margin-10px-left text-orange">Owner Name:</strong>
+                                            <strong class="margin-10px-left text-orange">{% trans 'Owner Name' %}:</strong>
                                         </div>
                                         <div class="col-md-7 col-7">
                                             <p>{{ object.owner_of_organization }}</p>
@@ -92,7 +91,7 @@
                                     <div class="row">
                                         <div class="col-md-5 col-5">
                                             <i class="fas fa-mobile-alt text-yellow"></i>
-                                            <strong class="margin-10px-left text-yellow">Owner Phone:</strong>
+                                            <strong class="margin-10px-left text-yellow">{% trans 'Owner Phone' %}:</strong>
                                         </div>
                                         <div class="col-md-7 col-7">
                                             <p>{{ object.owner_phone }}</p>
@@ -103,7 +102,7 @@
                                     <div class="row">
                                         <div class="col-md-5 col-5">
                                             <i class="fa fa-gem text-lightred"></i>
-                                            <strong class="margin-10px-left text-lightred">Products:</strong>
+                                            <strong class="margin-10px-left text-lightred">{% trans 'Products' %}:</strong>
                                         </div>
                                         <div class="col-md-7 col-7">
                                             {% for product in object.products.all %}
@@ -116,8 +115,7 @@
                                     <div class="row">
                                         <div class="col-md-5 col-5">
                                             <i class="fa fa-gem text-green"></i>
-                                            <strong class="margin-10px-left text-green">Recommended
-                                                Products:</strong>
+                                            <strong class="margin-10px-left text-green">{% trans 'Recommended Products' %}:</strong>
                                         </div>
                                         <div class="col-md-7 col-7">
                                             <p>{{ object.get_recommended_products }}</p>
@@ -129,28 +127,11 @@
                                         <div class="row">
                                             <div class="col-md-5 col-5">
                                                 <i class="fas fa-edit text-purple"></i>
-                                                <strong class="margin-10px-left xs-margin-four-left text-purple">Edit:</strong>
+                                                <strong class="margin-10px-left xs-margin-four-left text-purple">{% trans 'Edit' %}:</strong>
                                             </div>
                                             <div class="col-md-7 col-7">
                                                 <a style="text-decoration: none"
-                                                   href="{% url 'organizations:update-organization' object.pk %}">Click
-                                                    Here</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                {% endif %}
-                                {% if object.followup_set.all %}
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-5 col-5">
-                                                <i class="fas fa-edit text-purple"></i>
-                                                <strong class="margin-10px-left xs-margin-four-left text-purple">Follow
-                                                    Ups:</strong>
-                                            </div>
-                                            <div class="col-md-7 col-7">
-                                                <a style="text-decoration: none"
-                                                   href="{% url 'sale:followup-list' %}">Click
-                                                    Here</a>
+                                                   href="{% url 'organizations:update-organization' object.pk %}">{% trans 'Click Here' %}</a>
                                             </div>
                                         </div>
                                     </li>

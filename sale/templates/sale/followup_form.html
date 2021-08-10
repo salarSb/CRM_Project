@@ -1,5 +1,6 @@
 {% extends 'organizations/base.html' %}
 {% load widget_tweaks %}
+{% load i18n %}
 {% block content %}
     <div class="container">
         <div class="row">
@@ -7,16 +8,17 @@
                 <form method="POST">
                     {% csrf_token %}
                     <div class="form-group">
-                        <label for="id_organization">Organization</label>
+                        <label for="id_organization">{% trans 'Organization' %}</label>
                         {% render_field form.organization attr="required" class="form-control" %}
                     </div>
                     <div class="form-group">
-                        <label for="id_description">Description</label>
+                        <label for="id_description">{% trans 'Description' %}</label>
                         {% render_field form.description attr="required" class="form-control" %}
                     </div>
                 </form>
                 <div>
-                    <button id="send_followup" type="submit" class="btn btn-outline-success btn-sm">Submit</button>
+                    <button id="send_followup" type="submit"
+                            class="btn btn-outline-success btn-sm">{% trans 'Submit' %}</button>
                 </div>
             </div>
         </div>
@@ -37,10 +39,10 @@
                         description: description
                     },
                     success: function () {
-                        alert('Follow Up has been saved')
+                        alert('{% trans "Follow Up has been saved" %}')
                     },
                     error: function () {
-                        alert('invalid data')
+                        alert('{% trans "invalid data" %}')
                     }
                 })
             })

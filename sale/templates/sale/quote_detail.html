@@ -1,31 +1,32 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html {% if LANGUAGE_BIDI %}lang="fa" dir="rtl" {% endif %} lang='en' dir="ltr">
 <head>
     <meta charset="UTF-8">
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <title>quote-pdf</title>
+    <title>{% trans 'quote pdf' %}</title>
 </head>
 <body>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <dl>
-                <dt>Submitted by</dt>
+                <dt>{% trans 'Submitted by' %}</dt>
                 <dd>{{ object.owner.get_full_name }}</dd>
-                <dt>Date</dt>
+                <dt>{% trans 'Date' %}</dt>
                 <dd>{{ object.created_on }}</dd>
             </dl>
             <table class="table">
                 <thead class="thead-light">
                 <tr>
-                    <th scope="col">Costumer Name</th>
-                    <th scope="col">Organization</th>
-                    <th scope="col">Product</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">price</th>
-                    <th scope="col">Tax</th>
-                    <th scope="col">discount</th>
+                    <th scope="col">{% trans 'Costumer Name' %}</th>
+                    <th scope="col">{% trans 'Organization' %}</th>
+                    <th scope="col">{% trans 'Product' %}</th>
+                    <th scope="col">{% trans 'Quantity' %}</th>
+                    <th scope="col">{% trans 'price' %}</th>
+                    <th scope="col">{% trans 'Tax' %}</th>
+                    <th scope="col">{% trans 'discount' %}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,7 +44,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <td colspan="7">Total Price with Tax and Discount :
+                    <td colspan="7">{% trans 'Total Price with Tax and Discount' %} :
                         ${{ object.get_total_price | floatformat:0 }}
                     </td>
                 </tr>
