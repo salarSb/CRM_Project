@@ -8,3 +8,4 @@ weasyprint
 celery
 gevent
 djangorestframework-simplejwt
+python-decouple

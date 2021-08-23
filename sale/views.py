@@ -90,7 +90,7 @@ class FollowUpCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView
         self.object = form.save()
         return JsonResponse(data={
             'success': True,
-        }, status=200)
+        }, status=201)
 
     def form_invalid(self, form):
         return JsonResponse(data={
